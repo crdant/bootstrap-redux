@@ -2,7 +2,7 @@ product-name: credhub-service-broker
 
 product-properties:
   .properties.credhub_broker_enable_global_access_to_plans:
-    value: ((credhub-broker.enabled)) # required
+    value: ((credhub-service-broker.enabled)) # required
 
 network-properties:
   network:

@@ -1,24 +1,24 @@
-product-name: ((spring-cloud-services.product_name))
+product-name: ((p-spring-cloud-services.product_name))
 
 product-properties:
   .deploy-service-broker.broker_max_instances:
-    value: ((spring-cloud-services.instance_limit)) # required
+    value: ((p-spring-cloud-services.instance_limit)) # required
   .deploy-service-broker.disable_cert_check:
-    value: ((spring-cloud-services.security.skip_tls_verification)) # required
+    value: ((p-spring-cloud-services.security.skip_tls_verification)) # required
   .deploy-service-broker.instances_app_push_timeout:
-    value: ((spring-cloud-services.timeout))
+    value: ((p-spring-cloud-services.timeout))
   .deploy-service-broker.message_bus_service:
-    value: ((spring-cloud-services.services.message_bus.name)) # required
+    value: ((p-spring-cloud-services.services.message_bus.name)) # required
   .deploy-service-broker.message_bus_service_plan:
-    value: ((spring-cloud-services.services.message_bus.plan)) # required
+    value: ((p-spring-cloud-services.services.message_bus.plan)) # required
   .deploy-service-broker.persistence_store_service:
-    value: ((spring-cloud-services.services.database.name)) # required
+    value: ((p-spring-cloud-services.services.database.name)) # required
   .deploy-service-broker.persistence_store_service_plan:
-    value: ((spring-cloud-services.services.database.plan)) # required
+    value: ((p-spring-cloud-services.services.database.plan)) # required
   .deploy-service-broker.secure_credentials:
-    value: ((spring-cloud-services.security.use_credhub)) # required
+    value: ((p-spring-cloud-services.security.use_credhub)) # required
   .register-service-broker.enable_global_access:
-    value: ((spring-cloud-services.service_access)) # required
+    value: ((p-spring-cloud-services.service_access)) # required
 
 network-properties:
   network:

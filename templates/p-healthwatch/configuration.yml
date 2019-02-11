@@ -1,4 +1,4 @@
-product-name: ((healthwatch.product_name))
+product-name: ((p-healthwatch.product_name))
 
 product-properties:
   .healthwatch-forwarder.boshhealth_instance_count:
@@ -12,9 +12,9 @@ product-properties:
   .healthwatch-forwarder.foundation_name:
     value: pcf-((cloud))-((environment))
   .healthwatch-forwarder.health_check_az:
-    value: ((healthwatch.forwarder.az)) # required
+    value: ((p-healthwatch.forwarder.az)) # required
   .healthwatch-forwarder.health_check_vm_type:
-    value: ((healthwatch.forwarder.vm_type)) # required
+    value: ((p-healthwatch.forwarder.vm_type)) # required
   .healthwatch-forwarder.ingestor_instance_count:
     value: 4 # required
   .healthwatch-forwarder.opsman_instance_count:
@@ -29,9 +29,9 @@ product-properties:
     value: enable # required
   .properties.boshtasks.enable.bosh_taskcheck_password:
     value: # required
-      secret: ((healthwatch.bosh.password))
+      secret: ((p-healthwatch.bosh.password))
   .properties.boshtasks.enable.bosh_taskcheck_username:
-    value: ((healthwatch.bosh.username))  # required
+    value: ((p-healthwatch.bosh.username))  # required
   .properties.opsman:
     value: enable # required
   .properties.opsman.enable.url:

@@ -1,5 +1,4 @@
-
-spring-cloud-services:
+p-spring-cloud-services:
   product_name: p-spring-cloud-services
   product_slug: p-spring-cloud-services
   release_version: 2.0.4

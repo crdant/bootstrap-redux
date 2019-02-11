@@ -2,6 +2,8 @@
 BASEDIR=$(dirname $(dirname $0))
 work_dir=${BASEDIR}/work
 template_dir=${BASEDIR}/templates
+foundation_dir=${BASEDIR}/foundations
+
 default_glob="*.pivotal"
 
 login() {
@@ -42,7 +44,12 @@ template () {
   product_slug=${1}
   release_version=${2}
 
+  if [ ! -d ${template_dir}/${product_slug} ] ; then
+    mkdir -p ${template_dir}/${product_slug}
+  fi
+
   om config-template --product ${work_dir}/${product_slug}/${release_version}/* --include-placeholders > ${template_dir}/${product_slug}/configuration.yml
+  touch ${foundation_dir}/${cloud}/${environment}/${product_slug}.yml
 }
 
 show_products () {

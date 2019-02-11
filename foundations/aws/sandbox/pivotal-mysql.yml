@@ -1,4 +1,4 @@
-mysql:
+pivotal-mysql:
   product_name: pivotal-mysql
   product_slug: pivotal-mysql
   release_version: 2.5.3

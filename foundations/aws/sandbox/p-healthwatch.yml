@@ -1,4 +1,4 @@
-healthwatch:
+p-healthwatch:
   product_name: p-healthwatch
   product_slug: p-healthwatch
   release_version: 1.4.4

@@ -1,16 +1,16 @@
-product-name: ((scheduler.product_name))
+product-name: ((p-scheduler.product_name))
 
 product-properties:
-  .deploy-scheduler.enable_calls:
-    value: ((scheduler.security.allow_http_out)) # required
+  .deploy-p-scheduler.enable_calls:
+    value: ((p-scheduler.security.allow_http_out)) # required
   .properties.database_source:
     value: service_broker # required
   # .properties.database_source.external.url:
   #   value: null # required
   .properties.database_source.service_broker.name:
-    value: ((scheduler.database.service_broker)) # required
+    value: ((p-scheduler.database.service_broker)) # required
   .properties.database_source.service_broker.plan_name:
-    value: ((scheduler.database.service_plan)) # required
+    value: ((p-scheduler.database.service_plan)) # required
 
 network-properties:
   network:

@@ -1,4 +1,4 @@
-compliance-monitor:
+compliance:
   product_name: scanner
   product_slug: compliance
   release_version: 1.0.0-beta.7

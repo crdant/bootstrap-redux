@@ -1,14 +1,14 @@
-product-name: ((compliance-monitor.product_name))
+product-name: ((compliance.product_name))
 
 product-properties:
   .properties.benchmarks:
-    value: ((compliance-monitor.benchmarks))
+    value: ((compliance.benchmarks))
   .properties.max_audit_log_file_size:
     value: 6 # required
   .properties.ntp_server:
-    value: ((compliance-monitor.ntp_server)) # required
+    value: ((compliance.ntp_server)) # required
   .properties.scan_report_formats:
-    value: ((compliance-monitor.formats))
+    value: ((compliance.formats))
   .properties.syslog_host:
     value: ((monitoring.syslog.host)) # required
   .properties.syslog_port:

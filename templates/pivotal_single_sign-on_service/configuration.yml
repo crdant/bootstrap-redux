@@ -1,4 +1,4 @@
-product-name: ((sso.product_name))
+product-name: ((pivotal_single_sign-on_service.product_name))
 
 network-properties:
   network:

@@ -1,4 +1,4 @@
-metrics:
+apm:
   product_name: apmPostgres
   product_slug: apm
   release_version: 1.6.0

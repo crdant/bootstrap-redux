@@ -1,10 +1,10 @@
-redis:
+p-redis:
   product_slug: p-redis
   release_version: 1.14.4
   backups:
     email_alerts: true
     schedule: 0 0 * * *
-    bucket: sandbox.aws.pcf.redis.backup
+    bucket: sandbox.aws.pcf.p-redis.backup
     path: /
     timeout: 10
   on-demand:

@@ -1,4 +1,4 @@
-rabbitmq:
+p-rabbitmq:
   product_name: p-rabbitmq
   product_slug: p-rabbitmq
   release_version: 1.14.4

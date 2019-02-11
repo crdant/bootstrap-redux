@@ -1,4 +1,4 @@
-scheduler:
+p-scheduler:
   product_name: p-scheduler
   product_slug: p-scheduler
   release_version: 1.2.5
