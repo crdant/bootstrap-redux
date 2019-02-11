@@ -33,8 +33,7 @@ s3:
 
 credhub:
   server: https://plane.aws.crdant.io:8844
-  ca_cert: |
-
+  ca_cert: ((control_plane_certificate.ca))
 
 # operations and monitoring
 monitoring:
