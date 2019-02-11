@@ -1,5 +1,5 @@
-keys/*
-!keys/README.md
+secrets/*
+!secrets/README.md
 work/*
 !work/README.md
 state
