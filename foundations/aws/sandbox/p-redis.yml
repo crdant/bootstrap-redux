@@ -4,7 +4,7 @@ redis:
   backups:
     email_alerts: true
     schedule: 0 0 * * *
-    bucket: prd-aws.pcf.redis.backup
+    bucket: sandbox.aws.pcf.redis.backup
     path: /
     timeout: 10
   on-demand:

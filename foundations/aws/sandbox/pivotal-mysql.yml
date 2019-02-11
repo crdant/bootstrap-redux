@@ -6,7 +6,7 @@ mysql:
   backups:
     email_alerts: true
     schedule: 0 */8 * * *
-    bucket: prd-aws.pcf.mysql.backup
+    bucket: sandbox.aws.pcf.mysql.backup
     path: /
   monitoring:
     frequency: 30
