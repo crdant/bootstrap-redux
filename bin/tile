@@ -2,6 +2,7 @@
 BASEDIR=$(dirname $(dirname $0))
 work_dir=${BASEDIR}/work
 template_dir=${BASEDIR}/templates
+default_glob="*.pivotal"
 
 login() {
   pivnet login --api-token ${PIVNET_TOKEN}
@@ -13,7 +14,7 @@ download () {
 
   mkdir -p ${work_dir}/${product_slug}/${release_version}
   pivnet download-product-files --product-slug ${product_slug} --release-version ${release_version} \
-    --glob '*.pivotal' --download-dir=${work_dir}/${product_slug}/${release_version} --accept-eula
+    --glob '${glob:-$default_glob}' --download-dir=${work_dir}/${product_slug}/${release_version} --accept-eula
 }
 
 upload () {
@@ -66,6 +67,10 @@ if [ $# -gt 0 ]; then
         ;;
       --release | --release-version | -r)
         release=${2}
+        shift
+        ;;
+      --glob | --file-glob | -g)
+        glob=${2}
         shift
         ;;
       login)
