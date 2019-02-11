@@ -12,7 +12,7 @@ aws_az1: us-east-1b
 aws_az2: us-east-1c
 aws_az3: us-east-1d
 
-amis_nat: ami-0422d936d535c63b1
+amis_nat: ami-0e6b7d466815b8276
 aws_key_name: "PCF Operator Key Standard PEM"
 
 # platform automation
