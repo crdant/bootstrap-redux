@@ -1,0 +1,89 @@
+mysql:
+  product_name: pivotal-mysql
+  product_slug: pivotal-mysql
+  release_version: 2.5.3
+  instance_limit: 10
+  backups:
+    email_alerts: true
+    schedule: 0 */8 * * *
+    bucket: prd-aws.pcf.mysql.backup
+    path: /
+  monitoring:
+    frequency: 30
+    log_user_statistics: false
+    audit_logging: true
+    enable_roadmin: true
+  plans:
+    one:
+      type: single_node   # Inactive|single_node|leader_follower|galera
+      access: enable # enable|disable|manual
+      name: db-small
+      description: |
+        A small single node database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: m4.large
+      disk_size: "10240"
+    two:
+      type: single_node   # Inactive|single_node|leader_follower|galera
+      access: enable  # enable|disable|manual
+      name: db-medium
+      description: |
+        A medium single node database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: r4.large
+      disk_size: "20480"
+    three:
+      type: single_node  # Inactive|single_node|leader_follower|galera
+      access: enable # enable|disable|manual
+      name: db-large
+      description: |
+        A large single node database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: r4.xlarge
+      disk_size: "30720"
+    four:
+      type: leader_follower   # Inactive|single_node|leader_follower|galera
+      access: enable # enable|disable|manual
+      name: leader-follower-small
+      description: |
+        A small two-node leader-follower database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: m4.large
+      disk_size: "10240"
+    five:
+      type: leader_follower   # Inactive|single_node|leader_follower|galera
+      access: enable  # enable|disable|manual
+      name: leader-follower-medium
+      description: |
+        A medium two-node leader-follower database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: r4.large
+      disk_size: "20480"
+    six:
+      type: leader_follower  # Inactive|single_node|leader_follower|galera
+      access: enable # enable|disable|manual
+      name: leader-follower-large
+      description: |
+        A large two-node leader-follower database instance
+      instance_limit: 20
+      paid: false # pending chargebacks
+      vm_type: r4.xlarge
+      disk_size: "30720"
+    seven:
+      type: Inactive
+    eight:
+      type: Inactive
+    nine:
+      type: Inactive
+  security:
+    enable_tls: disabled  # required|disabled|enabled
+    use_credhub: true
+  upgrades:
+    simultaneous: 4
+    canary_instances: 1
+    timeout: 120

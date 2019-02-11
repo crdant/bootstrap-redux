@@ -1,0 +1,50 @@
+rabbitmq:
+  product_name: p-rabbitmq
+  product_slug: p-rabbitmq
+  release_version: 1.14.4
+  monitoring:
+    frequency: 30
+  on-demand:
+    instance_limit: 20
+    allow_outbound_internet: false
+    instance_sharing: "Yes"
+  plans:
+    one:
+      enabled: enabled  # N.B. can't be disabled, here for consistency
+      service_access: enable # enabled | disabled | manual
+      name: single-node
+      description: This plan provides a single dedicated RabbitMQ node
+      features: RabbitMQ 3.7
+      instance_limit: 10
+      nodes: 1
+      partition_behavior: pause_minority # pause_minority | autoheal
+      availability_zones:
+      - us-east-1b
+      - us-east-1c
+      - us-east-1d
+      vm_type: r4.large
+      disk_size: "30720"  # must be at least 2x the amount of ram available
+    two:
+      enabled: enabled  # enabled | disabled
+      service_access: enable # enabled | disabled | manual
+      name: small-cluster
+      description: This plan provides a small dedicated RabbitMQ cluster
+      features: RabbitMQ 3.7
+      instance_limit: 10
+      nodes: 3
+      partition_behavior: pause_minority # pause_minority | autoheal
+      availability_zones:
+      - us-east-1b
+      - us-east-1c
+      - us-east-1d
+      vm_type: r4.large
+      disk_size: "30720"  # must be at least 2x the amount of ram available
+    three:
+      enabled: disabled
+    four:
+      enabled: disabled
+    five:
+      enabled: disabled
+  security:
+    use_credhub: "Yes"
+    use_tls: optional  # optional | disabled

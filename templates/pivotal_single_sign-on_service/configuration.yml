@@ -1,0 +1,11 @@
+product-name: ((sso.product_name))
+
+network-properties:
+  network:
+    name: ((networks.services))
+  other_availability_zones:
+  - name: ((availability_zones.one))
+  - name: ((availability_zones.two))
+  - name: ((availability_zones.three))
+  singleton_availability_zone:
+    name: ((availability_zones.one))

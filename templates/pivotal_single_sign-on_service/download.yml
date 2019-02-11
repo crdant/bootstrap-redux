@@ -1,0 +1,6 @@
+pivnet-api-token: ((pivnet_token))
+pivnet-file-glob: ((tile_glob))
+pivnet-product-slug: ((sso.product_slug))
+product-version: ((sso.release_version))
+download-stemcell: true
+stemcell-iaas: ((iaas))

@@ -1,0 +1,18 @@
+
+spring-cloud-services:
+  product_name: p-spring-cloud-services
+  product_slug: p-spring-cloud-services
+  release_version: 2.0.4
+  instance_limit: 100
+  service_access: true
+  timeout:
+  security:
+    skip_tls_verification: false
+    use_credhub: true
+  services:
+    message_bus:
+      name: p.rabbitmq
+      plan: single-node
+    database:
+      name: p.mysql
+      plan: db-small

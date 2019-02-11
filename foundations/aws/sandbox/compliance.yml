@@ -1,0 +1,14 @@
+compliance-monitor:
+  product_name: scanner
+  product_slug: compliance
+  release_version: 1.0.0-beta.7
+  ntp_server: 169.254.169.254
+  baselines:
+  - base
+  - recommended
+  - strict
+  - stig
+  formats:
+  - log
+  - xml
+  - html

@@ -1,0 +1,83 @@
+product-name: ((rabbitmq.product_name))
+
+product-properties:
+  .on-demand-broker.global_service_instance_quota:
+    value: ((rabbitmq.on-demand.instance_limit))
+  .properties.enable_tls_selector:
+    value: ((rabbitmq.security.use_tls))
+  .properties.global_settings_secure_bindings:
+    value: ((rabbitmq.security.use_credhub))
+  .properties.global_settings_shareable_instances:
+    value: ((rabbitmq.on-demand.instance_sharing))
+  .properties.metrics_polling_interval:
+    value: ((rabbitmq.monitoring.frequency))
+  .properties.multitenant_support:
+    value: enabled
+  .properties.multitenant_support.enabled.server_admin_credentials:
+    value:
+      identity: ((rabbitmq.rabbitmq_multitenant_admin_credentials.username))
+      password: ((rabbitmq.rabbitmq_multitenant_admin_credentials.password))
+  .properties.multitenant_support.enabled.server_rsa_certificate:
+    value:
+      cert_pem: ((rabbitmq.wildcard_cert.certificate))
+      private_key_pem: ((rabbitmq.wildcard_cert.private_key))
+  .properties.on_demand_broker_plan_1_cf_service_access:
+    value: ((rabbitmq.plans.one.service_access))
+  .properties.on_demand_broker_plan_1_description:
+    value: This plan provides a single dedicated RabbitMQ node
+  .properties.on_demand_broker_plan_1_disk_limit_acknowledgement:
+    value:
+    - acknowledge
+  .properties.on_demand_broker_plan_1_features:
+    value: ((rabbitmq.plans.one.features))
+  .properties.on_demand_broker_plan_1_instance_quota:
+    value: ((rabbitmq.plans.one.instance_limit))
+  .properties.on_demand_broker_plan_1_name:
+    value: ((rabbitmq.plans.one.name))
+  .properties.on_demand_broker_plan_1_rabbitmq_az_placement:
+    value: ((rabbitmq.plans.one.availability_zones))
+  .properties.on_demand_broker_plan_1_rabbitmq_cluster_partition_handling_strategy:
+    value: ((rabbitmq.plans.one.partition_behavior))
+  .properties.on_demand_broker_plan_1_rabbitmq_number_of_nodes:
+    value: ((rabbitmq.plans.one.nodes))
+  .properties.on_demand_broker_plan_2_selector:
+    value: ((rabbitmq.plans.two.enabled))
+  .properties.on_demand_broker_plan_2_selector.enabled.cf_service_access:
+    value: ((rabbitmq.plans.two.service_access))
+  .properties.on_demand_broker_plan_2_selector.enabled.description:
+    value: ((rabbitmq.plans.two.description))
+  .properties.on_demand_broker_plan_2_selector.enabled.disk_limit_acknowledgement:
+    value:
+    - acknowledge
+  .properties.on_demand_broker_plan_2_selector.enabled.features:
+    value: ((rabbitmq.plans.two.features))
+  .properties.on_demand_broker_plan_2_selector.enabled.instance_quota:
+    value: ((rabbitmq.plans.two.instance_limit))
+  .properties.on_demand_broker_plan_2_selector.enabled.name:
+    value: ((rabbitmq.plans.two.name))
+  .properties.on_demand_broker_plan_2_selector.enabled.rabbitmq_az_placement:
+    value: ((rabbitmq.plans.two.availability_zones))
+  .properties.on_demand_broker_plan_2_selector.enabled.rabbitmq_cluster_partition_handling_strategy:
+    value: ((rabbitmq.plans.two.partition_behavior))
+  .properties.on_demand_broker_plan_2_selector.enabled.rabbitmq_number_of_nodes:
+    value: ((rabbitmq.plans.two.nodes))
+  .properties.on_demand_broker_plan_3_selector:
+    value: ((rabbitmq.plans.three.enabled))
+  .properties.on_demand_broker_plan_4_selector:
+    value: ((rabbitmq.plans.four.enabled))
+  .properties.on_demand_broker_plan_5_selector:
+    value: ((rabbitmq.plans.five.enabled))
+  .properties.syslog_selector:
+    value: enabled
+
+network-properties:
+  network:
+    name: ((networks.services))
+  other_availability_zones:
+  - name: ((availability_zones.one))
+  - name: ((availability_zones.two))
+  - name: ((availability_zones.three))
+  service_network:
+    name: ((networks.services))
+  singleton_availability_zone:
+    name: ((availability_zones.three))

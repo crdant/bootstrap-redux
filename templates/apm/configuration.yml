@@ -1,0 +1,27 @@
+product-name: ((metrics.product_name)) 
+
+product-properties:
+  .errand-runner.ingestor_instance_count:
+    value: 1 # required
+  .errand-runner.logs_queue_instance_count:
+    value: 1 # required
+  .errand-runner.logs_retention_window:
+    value: 14 # required
+  .errand-runner.metrics_queue_instance_count:
+    value: 1 # required
+  .errand-runner.metrics_retention_window:
+    value: 14 # required
+  .errand-runner.server_instance_count:
+    value: 1 # required
+
+network-properties:
+  network:
+    name: ((networks.services))
+  other_availability_zones:
+  - name: ((availability_zones.one))
+  - name: ((availability_zones.two))
+  - name: ((availability_zones.three))
+  service_network:
+    name: ((networks.services))
+  singleton_availability_zone:
+    name: ((availability_zones.two))

@@ -1,0 +1,4 @@
+credhub-broker:
+  product_slug: credhub-service-broker
+  release_version: 1.2.0
+  enabled: true

@@ -1,0 +1,196 @@
+product-name: p-redis
+
+product-properties:
+  .cf-redis-broker.redis_maxmemory:
+    value: ((redis.shared-vm.memory_limit)) # required
+  .cf-redis-broker.service_instance_limit:
+    value: ((redis.shared-vm.instance_limit)) # required
+  .dedicated-node.delete_dedicated_instances:
+    value: true # required
+  .properties.backups_selector:
+    value: S3 Backups # required
+  # .properties.backups_selector.azure.account:
+  #   value: null # required
+  # .properties.backups_selector.azure.bg_save_timeout:
+  #   value: 10 # required
+  # .properties.backups_selector.azure.blob_store_base_url:
+  #   value: null
+  # .properties.backups_selector.azure.container:
+  #   value: null # required
+  # .properties.backups_selector.azure.cron_schedule:
+  #   value: ((0 0 * * *)) # required
+  # .properties.backups_selector.azure.path:
+  #   value: null # required
+  # .properties.backups_selector.azure.storage_access_key:
+  #   value: null # required
+  # .properties.backups_selector.gcs.bg_save_timeout:
+  #   value: 10 # required
+  # .properties.backups_selector.gcs.bucket_name:
+  #   value: null # required
+  # .properties.backups_selector.gcs.cron_schedule:
+  #   value: 0 0 * * * # required
+  # .properties.backups_selector.gcs.project_id:
+  #   value: null # required
+  # .properties.backups_selector.gcs.service_account_json:
+  #   value: null # required
+  .properties.backups_selector.s3.access_key_id:
+    value: ((aws_access_key_id)) # required
+  .properties.backups_selector.s3.bg_save_timeout:
+    value: ((redis.backups.timeout)) # required
+  .properties.backups_selector.s3.bucket_name:
+    value: ((redis.backups.bucket)) # required
+  .properties.backups_selector.s3.cron_schedule:
+    value: ((redis.backups.schedule)) # required
+  .properties.backups_selector.s3.endpoint_url:
+    value:
+  .properties.backups_selector.s3.path:
+    value: ((redis.backups.path)) # required
+  .properties.backups_selector.s3.region:
+    value: ((aws_region))
+  .properties.backups_selector.s3.secret_access_key:
+    value: ((aws_secret_access_key)) # required
+  .properties.backups_selector.s3.signature_version:
+    value: "4"
+  # .properties.backups_selector.scp.bg_save_timeout:
+  #   value: 10 # required
+  # .properties.backups_selector.scp.cron_schedule:
+  #   value: 0 0 * * * # required
+  # .properties.backups_selector.scp.fingerprint:
+  #   value: ""
+  # .properties.backups_selector.scp.key:
+  #   value: null # required
+  # .properties.backups_selector.scp.path:
+  #   value: null # required
+  # .properties.backups_selector.scp.port:
+  #   value: "22" # required
+  # .properties.backups_selector.scp.server:
+  #   value: null # required
+  # .properties.backups_selector.scp.user:
+  #   value: null # required
+  .properties.canary_org_space_selector:
+    value: "No" # required
+  # .properties.canary_org_space_selector.active.org:
+  #   value:  # required
+  # .properties.canary_org_space_selector.active.space:
+  #   value:  # required
+
+  # service plans
+  # service plan 1
+  .properties.small_plan_selector:
+    value: ((redis.plans.one.active)) # required
+  .properties.small_plan_selector.active.az_single_select:
+    value: ((redis.plans.one.availability_zone)) # required
+  .properties.small_plan_selector.active.cf_service_access:
+    value: ((redis.plans.one.service_access)) # required
+  .properties.small_plan_selector.active.description:
+    value: ((redis.plans.one.description))
+  .properties.small_plan_selector.active.disk_size:
+    value: ((redis.plans.one.disk_size)) # required
+  .properties.small_plan_selector.active.instance_limit:
+    value: ((redis.plans.one.instance_limit)) # required
+  .properties.small_plan_selector.active.lua_scripting:
+    value: ((redis.plans.one.scripting)) # required
+  .properties.small_plan_selector.active.maxclients:
+    value: ((redis.plans.one.max_clients)) # required
+  .properties.small_plan_selector.active.name:
+    value: ((redis.plans.one.name)) # required
+  .properties.small_plan_selector.active.tcp_keepalive:
+    value: ((redis.plans.one.keepalive)) # required
+  .properties.small_plan_selector.active.timeout:
+    value: ((redis.plans.one.timeout)) # required
+  .properties.small_plan_selector.active.vm_type:
+    value: ((redis.plans.one.vm_type)) # required
+
+  # service plan 2
+  .properties.medium_plan_selector:
+    value: ((redis.plans.two.active)) # required
+  .properties.medium_plan_selector.active.az_single_select:
+    value: ((redis.plans.two.availability_zone)) # required
+  .properties.medium_plan_selector.active.cf_service_access:
+    value: ((redis.plans.two.service_access)) # required
+  .properties.medium_plan_selector.active.description:
+    value: ((redis.plans.two.description))
+  .properties.medium_plan_selector.active.disk_size:
+    value: ((redis.plans.two.disk_size)) # required
+  .properties.medium_plan_selector.active.instance_limit:
+    value: ((redis.plans.two.instance_limit)) # required
+  .properties.medium_plan_selector.active.lua_scripting:
+    value: ((redis.plans.two.scripting)) # required
+  .properties.medium_plan_selector.active.maxclients:
+    value: ((redis.plans.two.max_clients)) # required
+  .properties.medium_plan_selector.active.name:
+    value: ((redis.plans.two.name)) # required
+  .properties.medium_plan_selector.active.tcp_keepalive:
+    value: ((redis.plans.two.keepalive)) # required
+  .properties.medium_plan_selector.active.timeout:
+    value: ((redis.plans.two.timeout)) # required
+  .properties.medium_plan_selector.active.vm_type:
+    value: ((redis.plans.two.vm_type)) # required
+
+  # service plan 3
+  .properties.large_plan_selector:
+    value: ((redis.plans.three.active)) # required
+  .properties.large_plan_selector.active.az_single_select:
+    value: ((redis.plans.three.availability_zone)) # required
+  .properties.large_plan_selector.active.cf_service_access:
+    value: ((redis.plans.three.service_access)) # required
+  .properties.large_plan_selector.active.description:
+    value: ((redis.plans.three.description))
+  .properties.large_plan_selector.active.disk_size:
+    value: ((redis.plans.three.disk_size)) # required
+  .properties.large_plan_selector.active.instance_limit:
+    value: ((redis.plans.three.instance_limit)) # required
+  .properties.large_plan_selector.active.lua_scripting:
+    value: ((redis.plans.three.scripting)) # required
+  .properties.large_plan_selector.active.maxclients:
+    value: ((redis.plans.three.max_clients)) # required
+  .properties.large_plan_selector.active.name:
+    value: ((redis.plans.three.name)) # required
+  .properties.large_plan_selector.active.tcp_keepalive:
+    value: ((redis.plans.three.keepalive)) # required
+  .properties.large_plan_selector.active.timeout:
+    value: ((redis.plans.three.timeout)) # required
+  .properties.large_plan_selector.active.vm_type:
+    value: ((redis.plans.three.vm_type)) # required
+
+  # end service plans
+  .properties.metrics_polling_interval:
+    value: 30 # required
+  .properties.syslog_selector:
+    value: "Yes without encryption" # required
+  .properties.syslog_selector.active.syslog_address:
+    value: ((monitoring.syslog.host)) # required
+  .properties.syslog_selector.active.syslog_port:
+    value: ((monitoring.syslog.port)) # required
+  .properties.syslog_selector.active.syslog_transport:
+    value: tcp # required
+  #.properties.syslog_selector.active_with_tls.syslog_address:
+  #  value: null # required
+  #.properties.syslog_selector.active_with_tls.syslog_ca_cert:
+  #   value: null # required
+  # .properties.syslog_selector.active_with_tls.syslog_permitted_peer:
+  #   value: null # required
+  # .properties.syslog_selector.active_with_tls.syslog_port:
+  #   value: null # required
+  .redis-on-demand-broker.maximum_parallel_upgrades:
+    value: ((redis.on-demand.upgrades.simultaneous)) # required
+  .redis-on-demand-broker.service_instance_limit:
+    value: ((redis.on-demand.instance_limit)) # required
+  .redis-on-demand-broker.service_instance_sharing:
+    value: ((redis.on-demand.instance_sharing)) # required
+  .redis-on-demand-broker.upgrade_canary_number:
+    value: ((redis.on-demand.upgrades.canary_instances)) # required
+  .redis-on-demand-broker.vm_extensions:
+    value: null
+
+network-properties:
+  network:
+    name: ((networks.services))
+  other_availability_zones:
+  - name: ((availability_zones.one))
+  - name: ((availability_zones.two))
+  - name: ((availability_zones.three))
+  service_network:
+    name: ((networks.services))
+  singleton_availability_zone:
+    name: ((availability_zones.two))

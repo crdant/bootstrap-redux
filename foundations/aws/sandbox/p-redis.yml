@@ -1,0 +1,59 @@
+redis:
+  product_slug: p-redis
+  release_version: 1.14.4
+  backups:
+    email_alerts: true
+    schedule: 0 0 * * *
+    bucket: prd-aws.pcf.redis.backup
+    path: /
+    timeout: 10
+  on-demand:
+    instance_limit: 20
+    allow_outbound_internet: false
+    instance_sharing: true
+    upgrades:
+      simultaneous: 4
+      canary_instances: 1
+  plans:
+    one:
+      active: Plan Active
+      name: cache-small
+      description: This plan provides a small dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
+      instance_limit: 20
+      service_access: enable  # enable | disable | manual
+      availability_zone: us-east-1b
+      vm_type: t2.micro
+      disk_size: "2048"
+      timeout: 3600
+      keepalive: 60
+      max_clients: 1000
+      scripting: false
+    two:
+      active: Plan Active
+      name: cache-medium
+      description: This plan provides a medium dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
+      instance_limit: 20
+      service_access: enable  # enable | disable | manual
+      availability_zone: us-east-1c
+      vm_type: t2.small
+      disk_size: "5120"
+      timeout: 3600
+      keepalive: 60
+      max_clients: 1000
+      scripting: false
+    three:
+      active: Plan Active
+      name: cache-large
+      description: This plan provides a large dedicated Redis instance, tailored for caching use-cases with persistence to disk enabled
+      instance_limit: 20
+      service_access: enable  # enable | disable | manual
+      availability_zone: us-east-1d
+      vm_type: m4.large
+      disk_size: "10240"
+      timeout: 3600
+      keepalive: 60
+      max_clients: 1000
+      scripting: false
+  shared-vm:
+    memory_limit: 512MB
+    instance_limit: 5

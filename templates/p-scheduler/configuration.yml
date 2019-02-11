@@ -1,0 +1,23 @@
+product-name: ((scheduler.product_name))
+
+product-properties:
+  .deploy-scheduler.enable_calls:
+    value: ((scheduler.security.allow_http_out)) # required
+  .properties.database_source:
+    value: service_broker # required
+  # .properties.database_source.external.url:
+  #   value: null # required
+  .properties.database_source.service_broker.name:
+    value: ((scheduler.database.service_broker)) # required
+  .properties.database_source.service_broker.plan_name:
+    value: ((scheduler.database.service_plan)) # required
+
+network-properties:
+  network:
+    name: ((networks.services))
+  other_availability_zones:
+  - name: ((availability_zones.one))
+  - name: ((availability_zones.two))
+  - name: ((availability_zones.three))
+  singleton_availability_zone:
+    name: ((availability_zones.two))

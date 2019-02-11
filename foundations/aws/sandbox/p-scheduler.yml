@@ -1,0 +1,9 @@
+scheduler:
+  product_name: p-scheduler
+  product_slug: p-scheduler
+  release_version: 1.2.5
+  security:
+    allow_http_out: true
+  database:
+    service_broker: p.mysql
+    service_plan: db-small
