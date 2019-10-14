@@ -1,7 +1,7 @@
 secrets/*
-!secrets/README.md
+!secrets/.gitkeep
 work/*
-!work/README.md
+!work/.gitkeep
 state
 .DS_Store
 .terraform

@@ -1,6 +1,0 @@
-pivnet-api-token: ((pivnet_token))
-pivnet-file-glob: ((tile_glob))
-pivnet-product-slug: ((redis.product_slug))
-product-version: ((redis.release_version))
-download-stemcell: true
-stemcell-iaas: ((iaas))

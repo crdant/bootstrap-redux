@@ -1,6 +1,0 @@
-pivnet-api-token: ((pivnet_token))
-pivnet-file-glob: ((tile_glob))
-pivnet-product-slug: ((credhub-broker.product_slug))
-product-version: ((credhub-broker.release_version))
-download-stemcell: true
-stemcell-iaas: ((iaas))

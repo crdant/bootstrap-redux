@@ -1,6 +1,0 @@
-pivnet-api-token: ((pivnet_token))
-pivnet-file-glob: ((tile_glob))
-pivnet-product-slug: ((spring-cloud-services.product_slug))
-product-version: ((spring-cloud-services.release_version))
-download-stemcell: true
-stemcell-iaas: ((iaas))

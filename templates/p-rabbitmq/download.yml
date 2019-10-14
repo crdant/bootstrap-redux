@@ -1,6 +1,0 @@
-pivnet-api-token: ((pivnet_token))
-pivnet-file-glob: ((tile_glob))
-pivnet-product-slug: ((rabbitmq.product_slug))
-product-version: ((rabbitmq.release_version))
-download-stemcell: true
-stemcell-iaas: ((iaas))
