@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 BASEDIR=$(dirname $(dirname $0))
 work_dir=${BASEDIR}/work
+product_dir=${BASEDIR}/products
 template_dir=${BASEDIR}/templates
 foundation_dir=${BASEDIR}/foundations
 
@@ -16,40 +17,22 @@ download () {
 
   mkdir -p ${work_dir}/${product_slug}/${release_version}
   pivnet download-product-files --product-slug ${product_slug} --release-version ${release_version} \
-    --glob '${glob:-$default_glob}' --download-dir=${work_dir}/${product_slug}/${release_version} --accept-eula
-}
-
-upload () {
-  product_slug=${1}
-  release_version=${2}
-
-  om --env ${env_dir}/env.yml upload-product --product ${work_dir}/${product_slug}/${release_version}/*
-}
-
-stage () {
-  product_slug=${1}
-  release_version=${2}
-
-  om --env ${env_dir}/env.yml stage-product --product-name ${product_slug} --product-version ${release_version}
-}
-
-export_product () {
-  product_slug=${1}
-  release_version=${2}
-
-  om --env ${env_dir}/env.yml staged-config --product-name ${product_slug} --include-placeholders > ${product_slug}.yml
+    --glob "${glob:-$default_glob}" --download-dir=${work_dir}/${product_slug}/${release_version} --accept-eula
 }
 
 template () {
   product_slug=${1}
   release_version=${2}
 
-  if [ ! -d ${template_dir}/${product_slug} ] ; then
-    mkdir -p ${template_dir}/${product_slug}
-  fi
+  om config-template --pivnet-product-slug ${product_slug} \
+    --product-version "${release_version}" \
+    --pivnet-file-glob "${glob:-$default_glob}" \
+    --pivnet-api-token ${PIVNET_TOKEN} \
+    --output-directory ${template_dir}
 
-  om config-template --product ${work_dir}/${product_slug}/${release_version}/* --include-placeholders > ${template_dir}/${product_slug}/configuration.yml
-  touch ${foundation_dir}/${cloud}/${environment}/${product_slug}.yml
+
+  mkdir -p ${product_dir}/${product_slug}/${release_version}
+  cp ${template_dir}/${product_slug}/${release_version}*/required-vars.yml ${product_dir}/${product_slug}/${release_version}/vars.yml
 }
 
 show_products () {
@@ -60,14 +43,6 @@ show_products () {
 if [ $# -gt 0 ]; then
   while [ $# -gt 0 ]; do
     case $1 in
-      --env | --environment | -e )
-        environment=${2}
-        shift
-        ;;
-      --cloud | --cloud | -c )
-        cloud=${2}
-        shift
-        ;;
       --slug | --product-slug | -p)
         slug=${2}
         shift
@@ -86,34 +61,8 @@ if [ $# -gt 0 ]; then
       download)
         download=1
         ;;
-      upload )
-        upload=1
-        ;;
-      stage )
-        stage=1
-        ;;
-      export )
-        export=1
-        ;;
       template )
         template=1
-        ;;
-      deploy )
-        download=1
-        upload=1
-        stage=1
-        ;;
-      staged )
-        show_products staged
-        exit
-        ;;
-      deployed | ls)
-        show_products deployed
-        exit
-        ;;
-      available | avail)
-        show_products available
-        exit
         ;;
       * )
         echo "Unrecognized option: $1" 1>&2
@@ -122,18 +71,6 @@ if [ $# -gt 0 ]; then
     esac
     shift
   done
-fi
-
-if [ -z "$cloud" ] && [ -z "$template" ]; then
-  echo "Cloud not specified. Please specify the cloud [aws,vmw] with the '-c, --cloud' flag."
-  exit 1
-fi
-
-if [ -z "$environment" ] && [ -z "$template" ]; then
-  echo "Environment not specified. Please specify the environment [lab,nonprod,prd] with the '-e, --environment' flag."
-  exit 1
-else
-  env_dir="${BASEDIR}/foundations/${cloud}/${environment}"
 fi
 
 if [ -z "$slug" ] && [ -z "$template" ]; then
@@ -154,22 +91,6 @@ if [ -n "$download" ] ; then
   download ${slug} ${release}
 fi
 
-if [ -n "$upload" ] ; then
-  upload ${slug} ${release}
-fi
-
-if [ -n "$stage" ] ; then
-  stage ${slug} ${release}
-fi
-
-if [ -n "$export" ] ; then
-  export_product ${slug} ${release}
-fi
-
 if [ -n "$template" ] ; then
   template ${slug} ${release}
-fi
-
-if [ -n "$pipeline" ] ; then
-  pipeline ${slug} ${release}
 fi

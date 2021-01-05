@@ -1,0 +1,23 @@
+---
+control-plane-v1:
+  description: PCF Control Plane environment using Platform Automation Engine
+  ops-manager: 2.7.1
+  products:
+    harbor-container-registry: 1.8.3
+    pivotal-container-service: 1.5.1
+  charts:
+  - stable/concourse
+  stemcells:
+    xenial:
+    - "315.70"
+
+baseline-v1:
+  description: PAS, PKS, and KSM installation
+  ops-manager: 2.7.1
+  products:
+    pivotal-container-service: 1.5.1
+    pas-for-kubernetes: 0.1.0-build.9
+    container-services-manager: 0.5.0
+  stemcells:
+    xenial:
+    - "315.70"
